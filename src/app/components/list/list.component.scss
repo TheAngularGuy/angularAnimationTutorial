@@ -83,6 +83,7 @@
 }
 
 .side-list-content {
+  overflow: hidden;
   width: calc(100vw - var(--side-liste-width));
 
   .side-list-content-empty {
