@@ -9,6 +9,7 @@
   <div class="side-list-items">
     <div
       class="side-list-item"
+      @listItemAnimation
       *ngFor="let contact of contactList; trackBy: contact?.id"
       [ngClass]="{ 'side-list-item-selected': contact.id == selectedContact?.id }"
       (click)="onSelectItem(contact)"
@@ -27,7 +28,7 @@
 <!-- * content wrapper -->
 <section class="side-list-content">
   <!-- * content -->
-  <div class="side-list-content-data" *ngIf="!!selectedContact">
+  <div class="side-list-content-data" *ngIf="!!selectedContact" @sideContentAnimation>
     <div class="side-list-content-data-overview">
       <div class="side-list-content-data-overview-info">
         <h3>{{ selectedContact.name }}</h3>
@@ -54,13 +55,15 @@
       </div>
     </div>
 
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus unde quod cupiditate ducimus,
-    consectetur adipisci et? Ad quas, aliquam sapiente, hic numquam quis quos culpa, molestias eaque iure
-    ipsum?
-    <br />
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum fugiat iste placeat culpa
-    nesciunt, qui porro ipsam quis nam, tempora aspernatur repudiandae corporis error voluptatibus
-    eligendi hic sed maxime.
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus unde quod cupiditate ducimus,
+      consectetur adipisci et? Ad quas, aliquam sapiente, hic numquam quis quos culpa, molestias eaque
+      iure ipsum?
+      <br />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum fugiat iste placeat culpa
+      nesciunt, qui porro ipsam quis nam, tempora aspernatur repudiandae corporis error voluptatibus
+      eligendi hic sed maxime.
+    </p>
   </div>
 
   <!-- * empty selection -->

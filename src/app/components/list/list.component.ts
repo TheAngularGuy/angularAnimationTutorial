@@ -1,3 +1,4 @@
+import { animate, group, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 interface Contact {
@@ -24,6 +25,38 @@ const CONTACTS_MOCK: Contact[] = new Array(5)
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  animations: [
+    trigger('noEnterAnimation', [
+      transition(':enter', [style({}), animate('250ms ease-out', style({}))]),
+    ]),
+    trigger('listItemAnimation', [
+      transition(':enter', [
+        style({ height: '0px', overflow: 'hidden' }),
+        group([animate('250ms ease-out', style({ height: '!' }))]),
+      ]),
+      transition(':leave', [
+        style({ height: '!', overflow: 'hidden' }),
+        group([animate('250ms ease-out', style({ height: '0px' }))]),
+      ]),
+    ]),
+    trigger('sideContentAnimation', [
+      transition(':enter', [
+        style({
+          overflow: 'hidden',
+          transform: 'translateX(-100%)',
+          transformOrigin: 'left',
+        }),
+        group([
+          animate(
+            '250ms ease-out',
+            style({
+              transform: 'translateX(0%)',
+            }),
+          ),
+        ]),
+      ]),
+    ]),
+  ],
 })
 export class ListComponent {
   contactList: Contact[] = CONTACTS_MOCK;
@@ -40,7 +73,7 @@ export class ListComponent {
       id: this.contactList.length * rndNum,
       name: `Contact ${this.contactList.length}`,
       email: `email${this.contactList.length}@provider.com`,
-      avatarUrl: `https://api.adorable.io/avatars/285/${rndNum}`,
+      avatarUrl: `https://api.adorable.io/avatars/285/${6}`,
     };
     // * adding a new contact to the list
     this.contactList = [newContact, ...this.contactList];
