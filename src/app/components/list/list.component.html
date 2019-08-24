@@ -1,1 +1,71 @@
-<p>list works!</p>
+<!-- * side list -->
+<aside class="side-list">
+  <!-- * side list toolbar -->
+  <div class="side-list-toolbar">
+    <span class="title">Contacts</span>
+    <button class="btn" (click)="onAddItem()">Add</button>
+  </div>
+  <!-- * side list items-->
+  <div class="side-list-items">
+    <div
+      class="side-list-item"
+      *ngFor="let contact of contactList; trackBy: contact?.id"
+      [ngClass]="{ 'side-list-item-selected': contact.id == selectedContact?.id }"
+      (click)="onSelectItem(contact)"
+    >
+      <div class="side-list-item-avatar">
+        <img [src]="contact.avatarUrl" alt="profile picture" />
+      </div>
+      <div class="side-list-item-info">
+        <p class="side-list-item-info-name">{{ contact.name }}</p>
+        <p class="side-list-item-info-email">{{ contact.email }}</p>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- * content wrapper -->
+<section class="side-list-content">
+  <!-- * content -->
+  <div class="side-list-content-data" *ngIf="!!selectedContact">
+    <div class="side-list-content-data-overview">
+      <div class="side-list-content-data-overview-info">
+        <h3>{{ selectedContact.name }}</h3>
+        <span>{{ selectedContact.email }}</span>
+      </div>
+      <div class="side-list-content-data-overview-avatar">
+        <img [src]="selectedContact.avatarUrl" alt="profile picture" />
+      </div>
+    </div>
+
+    <div class="side-list-content-data-separator">
+      <h4>Overview</h4>
+      <div>
+        <button
+          class="btn  outline"
+          onclick="window.location = 'https://twitter.com/TheAngularGuy?ref_src=twsrc%5Etfw'"
+        >
+          contact
+        </button>
+        &nbsp;
+        <button class="btn danger outline" (click)="onDeleteItem(selectedContact)">
+          Delete
+        </button>
+      </div>
+    </div>
+
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus unde quod cupiditate ducimus,
+    consectetur adipisci et? Ad quas, aliquam sapiente, hic numquam quis quos culpa, molestias eaque iure
+    ipsum?
+    <br />
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum fugiat iste placeat culpa
+    nesciunt, qui porro ipsam quis nam, tempora aspernatur repudiandae corporis error voluptatibus
+    eligendi hic sed maxime.
+  </div>
+
+  <!-- * empty selection -->
+  <div class="side-list-content-empty" *ngIf="!selectedContact">
+    <img alt="empty-selection" src="https://img.icons8.com/ios/100/000000/nui2.png" />
+    <p>Select an item from the list.</p>
+  </div>
+</section>
