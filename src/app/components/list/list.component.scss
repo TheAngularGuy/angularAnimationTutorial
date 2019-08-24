@@ -84,12 +84,13 @@
 
 .side-list-content {
   overflow: hidden;
-  width: calc(100vw - var(--side-liste-width));
+  display: flex;
+  width: 100%;
 
   .side-list-content-empty {
+    width: 100%;
     text-align: center;
-    margin-top: 50vh;
-    transform: translateY(-50%);
+    margin-top: 25vh;
 
     img {
       opacity: 0.4;
@@ -103,7 +104,11 @@
 
   .side-list-content-data {
     padding: 1rem;
-    max-width: 800px;
+
+    .side-list-content-data-inner {
+      max-width: 800px;
+      width: calc(100vw - var(--side-liste-width));
+    }
 
     .side-list-content-data-overview {
       height: 100px;

@@ -29,45 +29,47 @@
 <section class="side-list-content">
   <!-- * content -->
   <div class="side-list-content-data" *ngIf="!!selectedContact" @sideContentAnimation>
-    <div class="side-list-content-data-overview">
-      <div class="side-list-content-data-overview-info">
-        <h3>{{ selectedContact.name }}</h3>
-        <span>{{ selectedContact.email }}</span>
+    <div class="side-list-content-data-inner">
+      <div class="side-list-content-data-overview">
+        <div class="side-list-content-data-overview-info">
+          <h3>{{ selectedContact.name }}</h3>
+          <span>{{ selectedContact.email }}</span>
+        </div>
+        <div class="side-list-content-data-overview-avatar">
+          <img [src]="selectedContact.avatarUrl" loading="lazy" alt="profile picture" />
+        </div>
       </div>
-      <div class="side-list-content-data-overview-avatar">
-        <img [src]="selectedContact.avatarUrl" loading="lazy" alt="profile picture" />
-      </div>
-    </div>
 
-    <div class="side-list-content-data-separator">
-      <h4>Overview</h4>
-      <div>
-        <button
-          class="btn  outline"
-          onclick="window.location = 'https://twitter.com/TheAngularGuy?ref_src=twsrc%5Etfw'"
-        >
-          contact
-        </button>
-        &nbsp;
-        <button class="btn danger outline" (click)="onDeleteItem(selectedContact)">
-          Delete
-        </button>
+      <div class="side-list-content-data-separator">
+        <h4>Overview</h4>
+        <div>
+          <button
+            class="btn  outline"
+            onclick="window.location = 'https://twitter.com/TheAngularGuy?ref_src=twsrc%5Etfw'"
+          >
+            contact
+          </button>
+          &nbsp;
+          <button class="btn danger outline" (click)="onDeleteItem(selectedContact)">
+            Delete
+          </button>
+        </div>
       </div>
-    </div>
 
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus unde quod cupiditate ducimus,
-      consectetur adipisci et? Ad quas, aliquam sapiente, hic numquam quis quos culpa, molestias eaque
-      iure ipsum?
-      <br />
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum fugiat iste placeat culpa
-      nesciunt, qui porro ipsam quis nam, tempora aspernatur repudiandae corporis error voluptatibus
-      eligendi hic sed maxime.
-    </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure natus unde quod cupiditate ducimus,
+        consectetur adipisci et? Ad quas, aliquam sapiente, hic numquam quis quos culpa, molestias eaque
+        iure ipsum?
+        <br />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet earum fugiat iste placeat culpa
+        nesciunt, qui porro ipsam quis nam, tempora aspernatur repudiandae corporis error voluptatibus
+        eligendi hic sed maxime.
+      </p>
+    </div>
   </div>
 
   <!-- * empty selection -->
-  <div class="side-list-content-empty" *ngIf="!selectedContact">
+  <div class="side-list-content-empty" *ngIf="!selectedContact" @emptyContentAnimation>
     <img alt="empty-selection" loading="lazy" src="https://img.icons8.com/ios/100/000000/nui2.png" />
     <p>Select an item from the list.</p>
   </div>

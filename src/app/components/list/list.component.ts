@@ -1,4 +1,4 @@
-import { animate, group, style, transition, trigger } from '@angular/animations';
+import { animate, group, query, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
 interface Contact {
@@ -41,19 +41,33 @@ const CONTACTS_MOCK: Contact[] = new Array(5)
     ]),
     trigger('sideContentAnimation', [
       transition(':enter', [
-        style({
-          overflow: 'hidden',
-          transform: 'translateX(-100%)',
-          transformOrigin: 'left',
-        }),
+        style({ width: '0px' }),
         group([
-          animate(
-            '250ms ease-out',
-            style({
-              transform: 'translateX(0%)',
-            }),
-          ),
+          query('.side-list-content-data-inner', [
+            style({ transform: 'translateX(-105%)' }),
+            group([animate('250ms ease-out', style({ transform: 'translateX(-0%)' }))]),
+          ]),
+          animate('250ms ease-out', style({ width: '!' })),
         ]),
+      ]),
+      transition(':leave', [
+        group([
+          query('.side-list-content-data-inner', [
+            style({ transform: 'translateX(-0%)' }),
+            group([animate('250ms ease-out', style({ transform: 'translateX(-105%)' }))]),
+          ]),
+          animate('250ms ease-out', style({ width: '0' })),
+        ]),
+      ]),
+    ]),
+    trigger('emptyContentAnimation', [
+      transition(':leave', [
+        style({ opacity: '1' }),
+        group([animate('250ms ease-out', style({ opacity: '0' }))]),
+      ]),
+      transition(':enter', [
+        style({ opacity: '0' }),
+        group([animate('250ms ease-out', style({ opacity: '1' }))]),
       ]),
     ]),
   ],
@@ -73,7 +87,7 @@ export class ListComponent {
       id: this.contactList.length * rndNum,
       name: `Contact ${this.contactList.length}`,
       email: `email${this.contactList.length}@provider.com`,
-      avatarUrl: `https://api.adorable.io/avatars/285/${6}`,
+      avatarUrl: `https://api.adorable.io/avatars/285/${rndNum}`,
     };
     // * adding a new contact to the list
     this.contactList = [newContact, ...this.contactList];
