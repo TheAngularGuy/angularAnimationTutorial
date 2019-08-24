@@ -14,7 +14,7 @@
       (click)="onSelectItem(contact)"
     >
       <div class="side-list-item-avatar">
-        <img [src]="contact.avatarUrl" alt="profile picture" />
+        <img [src]="contact.avatarUrl" loading="lazy" alt="profile picture" />
       </div>
       <div class="side-list-item-info">
         <p class="side-list-item-info-name">{{ contact.name }}</p>
@@ -34,7 +34,7 @@
         <span>{{ selectedContact.email }}</span>
       </div>
       <div class="side-list-content-data-overview-avatar">
-        <img [src]="selectedContact.avatarUrl" alt="profile picture" />
+        <img [src]="selectedContact.avatarUrl" loading="lazy" alt="profile picture" />
       </div>
     </div>
 
@@ -65,7 +65,7 @@
 
   <!-- * empty selection -->
   <div class="side-list-content-empty" *ngIf="!selectedContact">
-    <img alt="empty-selection" src="https://img.icons8.com/ios/100/000000/nui2.png" />
+    <img alt="empty-selection" loading="lazy" src="https://img.icons8.com/ios/100/000000/nui2.png" />
     <p>Select an item from the list.</p>
   </div>
 </section>
