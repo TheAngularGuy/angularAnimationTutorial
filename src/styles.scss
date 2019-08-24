@@ -2,8 +2,6 @@
   --light-bg: #fafafa;
   --medium-bg: #f4f4f4;
   --dark-bg: #efefef;
-
-  --grey-color: #888;
   --text-color: #2c3e50;
   --accent-color: #42b883;
   --warn-color: #f85a40;
@@ -26,10 +24,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.padding {
-  padding: 1rem;
-}
-
 .btn {
   border: none;
   box-shadow: none;
@@ -41,18 +35,19 @@ html {
   text-transform: uppercase;
   cursor: pointer;
 }
-
 .btn.danger {
   border: 1px solid var(--warn-color);
   background: var(--warn-color);
 }
-
 .btn.outline {
   color: var(--accent-color);
   background: transparent;
 }
-
-.btn.outline.danger {
+.btn.danger.outline {
   color: var(--warn-color);
   background: transparent;
+}
+
+.padding {
+  padding: 1rem;
 }
