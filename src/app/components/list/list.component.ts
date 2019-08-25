@@ -39,23 +39,28 @@ const CONTACTS_MOCK: Contact[] = new Array(5)
     ]),
     trigger('sideContentAnimation', [
       transition(':enter', [
+        // we set the width of the outer container to 0, and hide the
+        // overflow (so the inner container won't be visible)
         style({ width: '0px', overflow: 'hidden' }),
         group([
+          // we animate the outer container width to it's original value
+          animate('250ms ease-out', style({ width: '!' })),
+          // in the same time we translate the inner element all the
+          // way from left to right
           query('.side-list-content-data-inner', [
             style({ transform: 'translateX(-110%)' }),
             group([animate('250ms ease-out', style({ transform: 'translateX(-0%)' }))]),
           ]),
-          animate('250ms ease-out', style({ width: '!' })),
         ]),
       ]),
       transition(':leave', [
         style({ overflow: 'hidden' }),
         group([
+          animate('250ms ease-out', style({ width: '0' })),
           query('.side-list-content-data-inner', [
             style({ transform: 'translateX(-0%)' }),
             group([animate('250ms ease-out', style({ transform: 'translateX(-110%)' }))]),
           ]),
-          animate('250ms ease-out', style({ width: '0' })),
         ]),
       ]),
     ]),
