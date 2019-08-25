@@ -88,17 +88,20 @@
   width: 100%;
 
   .side-list-content-empty {
-    width: 100%;
     text-align: center;
     margin-top: 25vh;
 
-    img {
-      opacity: 0.4;
-    }
-    p {
-      text-align: inherit;
-      margin: 0;
-      opacity: 0.6;
+    div {
+      width: calc(100vw - var(--side-liste-width));
+
+      img {
+        opacity: 0.4;
+      }
+      p {
+        text-align: inherit;
+        margin: 0;
+        opacity: 0.6;
+      }
     }
   }
 
