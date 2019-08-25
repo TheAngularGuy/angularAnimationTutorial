@@ -10,7 +10,7 @@
     <div
       class="side-list-item"
       @listItemAnimation
-      *ngFor="let contact of contactList; trackBy: contact?.id"
+      *ngFor="let contact of contactList"
       [ngClass]="{ 'side-list-item-selected': contact.id == selectedContact?.id }"
       (click)="onSelectItem(contact)"
     >
