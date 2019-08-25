@@ -6,7 +6,7 @@
     <button class="btn" (click)="onAddItem()">Add</button>
   </div>
   <!-- * side list items-->
-  <div class="side-list-items">
+  <div class="side-list-items" @noEnterAnimation>
     <div
       class="side-list-item"
       @listItemAnimation
@@ -70,7 +70,9 @@
 
   <!-- * empty selection -->
   <div class="side-list-content-empty" *ngIf="!selectedContact" @emptyContentAnimation>
-    <img alt="empty-selection" loading="lazy" src="https://img.icons8.com/ios/100/000000/nui2.png" />
-    <p>Select an item from the list.</p>
+    <div>
+      <img alt="empty-selection" loading="lazy" src="https://img.icons8.com/ios/100/000000/nui2.png" />
+      <p>Select an item from the list.</p>
+    </div>
   </div>
 </section>

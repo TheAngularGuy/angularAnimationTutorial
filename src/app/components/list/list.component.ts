@@ -26,9 +26,7 @@ const CONTACTS_MOCK: Contact[] = new Array(5)
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   animations: [
-    trigger('noEnterAnimation', [
-      transition(':enter', [style({}), animate('250ms ease-out', style({}))]),
-    ]),
+    trigger('noEnterAnimation', [transition(':enter', [])]),
     trigger('listItemAnimation', [
       transition(':enter', [
         style({ height: '0px', overflow: 'hidden' }),
@@ -41,20 +39,21 @@ const CONTACTS_MOCK: Contact[] = new Array(5)
     ]),
     trigger('sideContentAnimation', [
       transition(':enter', [
-        style({ width: '0px' }),
+        style({ width: '0px', overflow: 'hidden' }),
         group([
           query('.side-list-content-data-inner', [
-            style({ transform: 'translateX(-105%)' }),
+            style({ transform: 'translateX(-110%)' }),
             group([animate('250ms ease-out', style({ transform: 'translateX(-0%)' }))]),
           ]),
           animate('250ms ease-out', style({ width: '!' })),
         ]),
       ]),
       transition(':leave', [
+        style({ overflow: 'hidden' }),
         group([
           query('.side-list-content-data-inner', [
             style({ transform: 'translateX(-0%)' }),
-            group([animate('250ms ease-out', style({ transform: 'translateX(-105%)' }))]),
+            group([animate('250ms ease-out', style({ transform: 'translateX(-110%)' }))]),
           ]),
           animate('250ms ease-out', style({ width: '0' })),
         ]),
@@ -63,11 +62,11 @@ const CONTACTS_MOCK: Contact[] = new Array(5)
     trigger('emptyContentAnimation', [
       transition(':leave', [
         style({ opacity: '1' }),
-        group([animate('250ms ease-out', style({ opacity: '0' }))]),
+        group([animate('250ms ease-out', style({ opacity: '0', width: '0px' }))]),
       ]),
       transition(':enter', [
-        style({ opacity: '0' }),
-        group([animate('250ms ease-out', style({ opacity: '1' }))]),
+        style({ opacity: '0', width: '0px' }),
+        group([animate('250ms ease-in', style({ opacity: '1', width: '!' }))]),
       ]),
     ]),
   ],
