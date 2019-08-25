@@ -1,3 +1,5 @@
+# Angular Animation Tutorial
+
 Animation is a design tool we can use to lend physicality and tangibility to our abstract digital creations by making them feel more familiar and friendly. A lot of components library take full advantage of animations to make their components more relatable to audiences. The good news is, as an Angular developer we can have great components almost out of the box. The bad news is that we almost solely rely on those libraries to do the animations for us, to the point where the Angular animation API is one of the most, if not _the_ underused Angular API.
 
 To change that, I'll try my best, in this post, to show you all you need to know about Angular animations to get you started. To do that, we will build together this awesome component:
